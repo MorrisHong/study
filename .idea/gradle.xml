@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/book-data-structures-the-fun-way" />
+            <option value="$PROJECT_DIR$/book-seriously-good-software" />
           </set>
         </option>
       </GradleProjectSettings>

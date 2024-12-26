@@ -3,3 +3,4 @@ plugins {
 }
 rootProject.name = "study"
 include("book-data-structures-the-fun-way")
+include("book-seriously-good-software")
