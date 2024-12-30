@@ -20,6 +20,8 @@ dependencies {
     implementation("org.http4k:http4k-core")
     implementation("org.http4k:http4k-server-jetty")
     implementation("org.slf4j:slf4j-simple:${slf4jVersion}")
+    testImplementation("org.http4k:http4k-client-jetty")
+    implementation("org.http4k:http4k-testing-strikt")
 }
 
 tasks.test {
