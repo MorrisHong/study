@@ -1,4 +1,4 @@
-package kr.gracelove
+package kr.gracelove.container
 
 /**
  * 수조를 나타내는 인터페이스
