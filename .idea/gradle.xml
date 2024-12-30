@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/book-data-structures-the-fun-way" />
             <option value="$PROJECT_DIR$/book-seriously-good-software" />
+            <option value="$PROJECT_DIR$/discovery" />
+            <option value="$PROJECT_DIR$/objects-to-functions" />
           </set>
         </option>
       </GradleProjectSettings>
