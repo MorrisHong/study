@@ -7,6 +7,8 @@ import org.http4k.routing.routes
 import org.http4k.server.Jetty
 import org.http4k.server.asServer
 
+data class HtmlPage(val raw: String)
+
 val htmlPage = """
     <html>
         <body>

@@ -1,6 +1,9 @@
 package ui
 
+import domain.ListName
+import domain.ToDoItem
 import domain.ToDoList
+import domain.User
 import org.http4k.client.JettyClient
 import org.http4k.core.Method
 import org.http4k.core.Request
@@ -37,9 +40,30 @@ class SeeATodoListAT {
             fail(response.toMessage())
     }
 
-    fun parseResponse(html: String): ToDoList = TODO("parse the response")
+
+    private fun parseResponse(html: String): ToDoList {
+        val nameRegex = "<h2>.*<".toRegex()
+        val listName = ListName(extractListName(nameRegex, html))
+        val itemsRegex = "<td>.*?<".toRegex()
+        val items = itemsRegex.findAll(html)
+            .map { ToDoItem(extractItemDesc(it)) }.toList()
+        return ToDoList(listName, items)
+    }
+
+    private fun extractListName(nameRegex: Regex, html: String): String =
+        nameRegex.find(html)?.value
+            ?.substringAfter("<h2>")
+            ?.dropLast(1)
+            .orEmpty()
+
+    private fun extractItemDesc(matchResult: MatchResult): String =
+        matchResult.value.substringAfter("<td>").dropLast(1)
+
 
     private fun startTheApplication(user: String, listName: String, items: List<String>) {
-        val server = Zettai().asServer(Jetty(8081))
+        val toDoList = ToDoList(ListName(listName), items.map(::ToDoItem))
+        val lists = mapOf(User(user) to listOf(toDoList))
+        val server = Zettai(lists).asServer(Jetty(8081))
+        server.start()
     }
 }
